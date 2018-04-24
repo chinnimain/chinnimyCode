@@ -1,0 +1,23 @@
+<apex:page standardController="account">
+    <apex:pageBlock title="{!account.Name}">
+        <apex:tabPanel id="tabpanel">
+            <apex:tab Label="Details" reRender="tabpanel" switchType="ajax">
+                    <apex:detail relatedList="false" inlineEdit="true"/>
+            </apex:tab>
+             <apex:tab Label="Contact" reRender="tabpanel" switchType="ajax">
+                    <apex:relatedList list="Contacts"/>/>
+            </apex:tab>
+           
+            <apex:tab label="opportunities" reRender="tabpanel" switchType="ajax"  >
+            <apex:detail relatedList="false"/>
+           
+            </apex:tab>
+           
+            
+            <apex:tab label="cases" reRender="tabpanel" switchType="ajax">
+            <apex:detail relatedList="false"/>
+           
+            </apex:tab>
+        </apex:tabPanel>
+    </apex:pageBlock>
+</apex:page>

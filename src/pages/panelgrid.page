@@ -1,0 +1,66 @@
+<apex:page controller="PagingController">
+<apex:form >
+
+  <apex:pageBlock title="Books">
+   <apex:pageBlockSection columns="3">    
+    <apex:pageBlockSectionItem ><apex:outputText value="" id="asd1"/></apex:pageBlockSectionItem>
+       <apex:pageBlockSectionItem dataStyle="align:left;">
+        <apex:outputText value="Welcome to review page" id="asd"/>
+        </apex:pageBlockSectionItem>
+        <apex:pageBlockSectionItem >
+        <apex:outputText value="dadddddddddddddddddddddddddd" id="theThird"/>
+         </apex:pageBlockSectionItem>   
+    </apex:pageBlockSection>
+    <apex:pageBlockSection columns="1">
+    <apex:tabPanel switchType="client" selectedTab="name2" id="theTabPanel" width="100%">
+        <apex:tab label="Products" name="books" id="tabOne">
+        <apex:pageBlock title="Search for Products:">
+        <apex:pageBlockSection >
+        
+        <apex:panelGrid columns="3" id="theGrid">
+
+           Type part of the Product name: <apex:inputtext value="{!searchProduct}"  size="30"/> <apex:commandbutton value="Search" action="{!search}" rerender="ProductTable"/>
+        </apex:panelGrid>
+        
+        
+        </apex:pageBlockSection>
+           <apex:pageblockSection columns="1">
+           <apex:pageblockTable value="{!SearchResults}" var="c" id="ProductTable">
+             
+              <apex:column value="{!c.Name}" headerValue="Product Name"/>
+             <apex:column headerValue="My Rating">
+             <apex:commandbutton value="1" action="{!ratingButton}" rerender="ProductTable"><apex:param name="one" assignTo="{!ratingInt}" value="1" /></apex:commandbutton>
+    <apex:commandbutton value="2" action="{!ratingButton}" rerender="ProductTable"><apex:param name="Second" assignTo="{!ratingInt}" value="2" /></apex:commandbutton>
+    <apex:commandbutton value="3" action="{!ratingButton}" rerender="ProductTable"><apex:param name="three" assignTo="{!ratingInt}" value="3" /></apex:commandbutton>
+    <apex:commandbutton value="4" action="{!ratingButton}" rerender="ProductTable"><apex:param name="four" assignTo="{!ratingInt}" value="4" /></apex:commandbutton>
+    <apex:commandbutton value="5" action="{!ratingButton}" rerender="ProductTable"><apex:param name="five" assignTo="{!ratingInt}" value="5" /></apex:commandbutton>
+             </apex:column>
+           </apex:pageblockTable>
+           </apex:pageblocksection>
+           <apex:pageblockSection columns="1">
+            your search returned 10 results...Please use a more specific search string if you do not see the Product you desire.
+           </apex:pageblockSection>
+           
+           </apex:pageBlock>
+        </apex:tab>
+        <apex:tab label="My Book Reviews"  id="tabTwo"></apex:tab>
+    </apex:tabPanel>
+    </apex:pageBlockSection>
+    <!--
+    <apex:pageblocksection columns="3">
+    <apex:pageBlockSectionItem >
+    <apex:panelGrid columns="4" >
+    <apex:commandLink action="{!first}">First</apex:commandlink>
+    <apex:commandLink action="{!previous}" rendered="{!hasPrevious}">Previous</apex:commandlink>
+    <apex:commandLink action="{!next}" rendered="{!hasNext}">Next</apex:commandlink>
+    <apex:commandLink action="{!last}">Last</apex:commandlink>
+    </apex:panelGrid>
+    </apex:pageBlockSectionItem>
+    <apex:pageBlockSectionItem >hai</apex:pageBlockSectionItem>
+    <apex:pageBlockSectionItem >hai</apex:pageBlockSectionItem>
+    </apex:pageblocksection>
+    -->
+    </apex:pageBlock>
+    
+    </apex:form>
+</apex:page>

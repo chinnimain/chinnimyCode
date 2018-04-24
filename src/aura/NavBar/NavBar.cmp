@@ -1,0 +1,198 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access='global'>
+    <aura:attribute name="TabName1" type="String" />
+    <aura:attribute name="TabName2" type="String" />
+    <aura:attribute name="TabName3" type="String" />
+    <aura:attribute name="whom" type="String" />
+    <aura:registerEvent name="NavEvent" type="c:NavEvent"/>
+
+   <aura:attribute name="SubTabs" type="String[]" default="cyan, yellow, magenta"/>
+	    <!-- div data-sly-resource="clientcontext"></div -->
+     <ltng:require styles="/resource/AigCss/AigCss/aemfoundationmain.min.css"
+                  />
+    <ltng:require styles="/resource/AigCss/AigCss/aigUsaConfigCssPartOne.min.css"
+                  />
+    <ltng:require styles="/resource/AigCss/AigCss/captchaSpecific.min.css"
+                  />
+     <div>
+         
+   <div class="dtm_header"></div>
+<div>
+			<div class="individual_header">
+			</div>
+				  <a class="offscreen" id="skipnav-search" href="http://www.aig.com/#individual-search-panel" onclick="s_objectID=&quot;http://www.aig.com/#individual-search-panel_1&quot;;return this.s_oc?this.s_oc(e):true">Skip to Search</a>
+				  <div><a class="offscreen" href="http://www.aig.com/#aig-template-wrapper" onclick="s_objectID=&quot;http://www.aig.com/#aig-template-wrapper_1&quot;;return this.s_oc?this.s_oc(e):true">Skip to Content</a></div>
+	<header>
+        <input type="hidden" id="trackParams" value="false"/>
+                <input type="hidden" id="currentPagePathId" value="/content/aig/america-canada/us/en/individual"/>
+        <input type="hidden" class="individuallinkpath" value="/content/aig/america-canada/us/en/individual"/>
+        <input type="hidden" class="businesslinkpath" value="/content/aig/america-canada/us/en/business"/>
+		<!-- Start: copy code of Utlity Bar Component-->	
+		<!--- Individual header-->
+			<div class="individual_header">
+				<!-- newlandingheader HTML Starts-->
+        <!-- Start: copy code of Utlity Bar Component-->
+		<nav aria-label="utility" role="navigation" class="utilitynav">
+        <div class="container-fluid">
+            <div class="row">
+					    <div class="col-sm-12 utlitybar">
+                            <div class="col-sm-7 no-padding headerleftlink">
+                                <ul class="leftlinks hidden-xs">
+                                                <li>
+                                                    <span class="glyphicon glyphicon-menu-right"></span><a href="http://www.aig.com/individual" title="Individuals &amp; Families" class="utilityleftlink0 active activeheaderlink" onclick="s_objectID=&quot;http://www.aig.com/individual_1&quot;;return this.s_oc?this.s_oc(e):true">Individuals &amp; Families</a>
+                                                </li>
+                                                <li>
+                                                    <a href="http://www.aig.com/business" title="Business &amp; Enterprise" class="utilityleftlink1" onclick="s_objectID=&quot;http://www.aig.com/business_1&quot;;return this.s_oc?this.s_oc(e):true">Business &amp; Enterprise</a>
+                                                </li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-5 headerrightlink">
+                                <ul class="rightlinks">
+                                                <li>
+                                                    <a href="http://www.aig.com/careers" title="Careers" onclick="s_objectID=&quot;http://www.aig.com/careers_1&quot;;return this.s_oc?this.s_oc(e):true">Careers</a>
+                                                </li>
+                                                <li>
+                                                    <a href="http://www.aig.com/investor-relations" title="Investors" onclick="s_objectID=&quot;http://www.aig.com/investor-relations_1&quot;;return this.s_oc?this.s_oc(e):true">Investors</a>
+                                                </li>
+                                                <li>
+                                                    <a href="http://www.aig.com/about-us" title="About AIG" onclick="s_objectID=&quot;http://www.aig.com/about-us_1&quot;;return this.s_oc?this.s_oc(e):true">About Us</a>
+                                                </li>
+                                        <li class="visible-xs utilitylogin">
+                                                            <a title="Log in" href="http://www.aig.com/login" onclick="s_objectID=&quot;http://www.aig.com/login_1&quot;;return this.s_oc?this.s_oc(e):true">Log in</a>
+                                        </li>
+                                </ul>
+                            </div>
+						</div>
+            </div>
+        </div>
+		</nav>
+        <!-- End: copy code of Utlity Bar Component-->
+        <nav class="nav nav-bar headerbar" aria-label="primary" role="navigation">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-12 headerlinks">
+                        <!-- Start: Start code of Logo Component-->
+                          <div class="col-xs-3 col-sm-4 headerlogolink">
+								  <a href="http://www.aig.com/individual" title="title" class="landingheaderlogo" target="_self" onclick="s_objectID=&quot;http://www.aig.com/individual_2&quot;;return this.s_oc?this.s_oc(e):true">
+                                      <img src="./AigH_files/aig-logo.svg" alt="Logo" class="logo"/>
+                             </a>
+                                <div class="logo printlogo">
+                                    <img src="./AigH_files/print-logo.png" alt="Logo"/>
+                                </div>
+                        </div>
+                        <!-- End: end code of LogoComponent-->
+                        <div class="rightnav col-xs-9 text-right ft-categories-white">
+                            <ul class="rightlinks">
+                                            <li style="visibility: visible;">
+                                                <a href="javascript:void(0)" title="{v.TabName1}" onclick="{!c.myAction}">Insurance</a>
+                                            </li>
+                                            <span class="margin visible-xs"></span>
+                                            <li style="visibility: visible;">
+                                                <a href="http://www.aig.com/individual/investments" title="Investments" onclick="s_objectID=&quot;http://www.aig.com/individual/investments_1&quot;;return this.s_oc?this.s_oc(e):true">Investments</a>
+                                            </li>
+                                            <span class="margin visible-xs"></span>
+                                            <li style="visibility: visible;">
+                                                <a href="http://www.aig.com/individual/individual-claims" title="Claims" onclick="s_objectID=&quot;http://www.aig.com/individual/individual-claims_1&quot;;return this.s_oc?this.s_oc(e):true">Claims</a>
+                                            </li>
+                                            <span class="margin visible-xs"></span>
+									<li class="primarylogin hidden-xs" style="visibility: visible;">
+														<a title="Log in" href="http://www.aig.com/login" onclick="s_objectID=&quot;http://www.aig.com/login_2&quot;;return this.s_oc?this.s_oc(e):true">Log in</a>
+									</li>
+                                    <li class="headericonsearch hidden-xs" style="visibility: visible;">
+                                        <a title="Title" id="search-panel" class="btn-search" href="http://www.aig.com/#" role="button" onclick="s_objectID=&quot;http://www.aig.com/#_1&quot;;return this.s_oc?this.s_oc(e):true">
+                                            <span class="glyphicon glyphicon-search search-btn"></span>
+                                            <span class="ft-categories-white">Search</span>
+                                        </a>
+										 <form name="search-box-form" method="get" action="http://www.aig.com/search-results" style="display: none;">
+											<div class="form-group">
+												<label for="header-input" class="sr-only">Search for</label>
+												<span class="glyphicon glyphicon-search search-btn"></span>
+                                                <input type="text" name="q" class="form-control ft-bodycopy placeholder header-search" id="header-input" placeholder="Search for" data-placeholder="Search for"/>
+												<a class="glyphicon glyphicon-remove" href="http://www.aig.com/#" onclick="s_objectID=&quot;http://www.aig.com/#_2&quot;;return this.s_oc?this.s_oc(e):true"><span class="sr-only">Close</span></a>
+                                                    <input class="cta ft-buttons disable" type="submit" value="Search"/>
+											</div>
+										</form>
+                                        <!-- Start: copy code of Seach Panel Modal Component-->
+                                    </li>
+                            </ul>
+                        </div>
+						<div class="col-xs-3 visible-xs menuHolder">
+								<a href="http://www.aig.com/#" data-toggle="modal" data-target="#mobheaderModal" title="Menu" onclick="s_objectID=&quot;http://www.aig.com/#_3&quot;;return this.s_oc?this.s_oc(e):true">
+									<span class="sr-only">Menu</span>
+									<div class="togglemodalblock">
+										<span class="togglemodal"></span>
+										<span class="togglemodal"></span>
+										<span class="togglemodal"></span>
+									</div>
+								</a>
+							</div>
+                    </div>
+                </div>
+                <!-- End: End code of Right Links and Search Bar Component-->
+            </div>
+        </nav>
+        <!-- Start: Start Code of Mobile UI Component-->       
+        <!-- Modal -->
+        <div class="mobdialogmodal modal fade" id="mobheaderModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog headerdialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" title="Close"><span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-xs-12 cookieselectedval text-center">
+                                    <a class="mobileheaderleft mobileutlilityleftlink0 activelink" title="Individuals &amp; Families">Individuals &amp; Families</a><a href="http://www.aig.com/content/aig/america-canada/us/en/business.html" class="mobileheaderleft mobileutlilityleftlink1" title="Business &amp; Enterprise" onclick="s_objectID=&quot;http://www.aig.com/content/aig/america-canada/us/en/business.html_1&quot;;return this.s_oc?this.s_oc(e):true">Go to Business &amp; Enterprise<span class="glyphicon glyphicon-menu-right"></span></a>
+                                    
+                        </div>
+                        <div class="col-xs-12">
+                            <ul class="mobleftlinks">
+                                        <li>
+                                            <a href="javascript:void(0)" title="Insurance" onclick="{!c.myAction}">Insurance</a>
+                                        </li>
+                                        <li>
+                                            <a href="http://www.aig.com/individual/investments" title="Investments" onclick="s_objectID=&quot;http://www.aig.com/individual/investments_2&quot;;return this.s_oc?this.s_oc(e):true">Investments</a>
+                                        </li>
+                                        <li>
+                                            <a href="http://www.aig.com/individual/individual-claims" title="Claims" onclick="s_objectID=&quot;http://www.aig.com/individual/individual-claims_2&quot;;return this.s_oc?this.s_oc(e):true">Claims</a>
+                                        </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-12 clear">
+                                <form name="search-box-form" method="get" action="http://www.aig.com/search-results">
+                                    <div class="modalsearch clear">
+                                        <label for="mob-header" class="sr-only">Search for</label>
+                                        <input type="text" name="q" class="header-search" id="mob-header" placeholder="Search for" data-placeholder="Search for"/>
+                                        <button class="search-mobile" type="submit" value="" disabled="disabled">
+                                            <span class="glyphicon glyphicon-search"></span>
+                                        </button>
+                                    </div>
+                                </form>
+                            <div>
+                                <ul class="mobrightlinks">
+								 <!--  <aura:iteration items="{!v.TabNames}" var="tab">
+                                                <li>
+                                                    <a href="http://www.aig.com/careers" title="Careers" onclick="s_objectID=&quot;http://www.aig.com/careers_2&quot;;return this.s_oc?this.s_oc(e):true">{v.tab}</a>
+                                                </li>                                               
+									 </aura:iteration>	
+-->
+										
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		<!-- end modal -->
+<!-- newlandingheader  HTML Ends-->
+			</div>
+		<!--- Business header-->
+		<div class="newheader_secondary_nav">
+		</div>
+	</header>	
+</div>
+</div>
+
+
+        
+</aura:component>

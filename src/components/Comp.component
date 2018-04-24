@@ -1,0 +1,7 @@
+<apex:component >
+<apex:attribute name="myValue" description="This is the value for the component."
+        type="Account" required="true"/>
+   <apex:outputPanel styleClass="whiteBG" >
+               {!myValue}
+            </apex:outputPanel>
+</apex:component>

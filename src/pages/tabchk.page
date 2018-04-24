@@ -1,0 +1,28 @@
+<apex:page standardController="Account" showHeader="true" tabStyle="account">
+    <apex:sectionHeader title="{!Account.Name} Account" subtitle="{!Account.Name}" />
+    <style>
+     .myActiveTab { background-color: #236FBD; color:white; background-image:none; }
+     .myInactiveTab { background-color: white; color:black; background-image:none; }
+     .whiteBG { background-color: white; }
+    </style>
+ <apex:form id="chk">
+ <apex:pageblock >
+ <apex:pageBlockSection >
+ </apex:pageBlockSection>
+  <apex:pageBlockSection >
+    <apex:tabPanel selectedTab="name2" id="theTabPanel" tabClass="myActiveTab" inactiveTabClass="myInactiveTab" switchType="<strong>ajax</strong>" >
+        <apex:tab label="Details" name="AccDetails" id="tabdetails"  switchType="ajax"  >
+            <apex:outputPanel styleClass="whiteBG">
+                <apex:detail relatedList="true" relatedListHover="true" title="false" inlineEdit="true" />
+            </apex:outputPanel> 
+        </apex:tab>
+        <apex:tab label="Process" name="AccDetails1" id="tabdetails1" reRender="theTabPanel" switchType="ajax" >
+        <apex:outputPanel id="Chktest">
+             {!Account.Name}
+            </apex:outputPanel>
+        </apex:tab>
+    </apex:tabPanel>
+    </apex:pageBlockSection>
+    </apex:pageblock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,165 @@
+<apex:page controller="SearchLeadOrContact" applyHtmlTag="false" sidebar="false" applyBodyTag="false" docType="html-5.0" standardStylesheets="false" showHeader="false">  
+  <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+   <head>  
+    <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" />
+     <script>
+j$ = jQuery.noConflict();
+
+//Modal Open
+function openModel(){
+  j$('#backdrop').addClass('slds-backdrop--open');
+  j$('#modal').addClass('slds-fade-in-open');
+}
+
+//Modal Close
+function closeModal(){
+  j$('#modal').removeClass('slds-fade-in-open');
+  j$('#backdrop').removeClass('slds-backdrop--open');
+}
+</script>
+   </head>  
+    
+   <body >  
+   <apex:slds />
+     <!-- REQUIRED SLDS WRAPPER - CUSTOM SCOPING CLASS USED WHEN GENERATING CUSTOM CSS -->  
+    <div class="slds-scope"> 
+        
+       <!-- ADD PANEL -->  
+       <div class="slds-panel slds-grid slds-grid--vertical slds-nowrap slds-form--compound" aria-labelledby="newaccountform">  
+         <apex:form >  
+           <!-- ADD SECTION GROUPS -->  
+           <div class="slds-panel__section">  
+              <div class="slds-panel__section">  
+             <div class="slds-button-group slds-align_absolute-center" role="group">  
+                
+                     <apex:commandButton value="Search" action="{!search}" styleClass="slds-button slds-button--brand" reRender=""/>  
+             </div>  
+           </div>  
+             <div class="form-element__group">  
+               <!-- ADD ROW -->  
+               <div class="slds-form-element__row">  
+                 <!-- ADD FIELDS -->  
+                 <div class="slds-form-element">  
+                   <apex:outputLabel styleClass="slds-form-element__label">Last Name</apex:outputLabel>  
+                   <apex:inputText value="{!lName}" styleClass="slds-form-element__control slds-input"/>  
+                 </div>  
+                 <div class="slds-form-element">  
+                   <apex:outputLabel styleClass="slds-form-element__label">Phone Number</apex:outputLabel>  
+                   <apex:inputText value="{!phone}" styleClass="slds-form-element__control slds-input"> </apex:inputText>  
+                 </div>  
+               </div>  
+               <!-- ADD ROW -->  
+               
+               <!-- ADD ROW -->  
+               <div class="slds-form-element__row">  
+                 <div class="slds-form-element">  
+                   <apex:outputLabel styleClass="slds-form-element__label">First Name</apex:outputLabel>  
+                   <apex:inputText value="{!fname}" styleClass="slds-form-element__control slds-input"/>  
+                 </div>  
+                 <div class="slds-form-element">  
+                   <apex:outputLabel styleClass="slds-form-element__label">Email</apex:outputLabel>  
+                   <apex:inputText value="{!email}" styleClass="slds-form-element__control slds-input"/>  
+                 </div>  
+               </div>  
+               <!-- ADD ROW -->  
+               <div class="slds-form-element__row">  
+                 <div class="slds-form-element">  
+                   <apex:outputLabel styleClass="slds-form-element__label">Opportunity Name</apex:outputLabel>  
+                   <apex:inputText value="{!oppyname}" styleClass="slds-form-element__control slds-input"/>
+                 </div>  
+                 <div class="slds-form-element">  
+                   <apex:outputLabel styleClass="slds-form-element__label">Zip code</apex:outputLabel>  
+                   <apex:inputText value="{!zip}" styleClass="slds-form-element__control slds-input"/>  
+                 </div>  
+               </div>  
+                <!-- ADD ROW -->  
+               <div class="slds-form-element__row">  
+                 <div class="slds-form-element">  
+                   <apex:outputLabel styleClass="slds-form-element__label">Policy#</apex:outputLabel>  
+                 <apex:inputText value="{!policy}" styleClass="slds-form-element__control slds-input"/>
+                 </div>  
+                 <div class="slds-form-element">  
+                   <apex:outputLabel styleClass="slds-form-element__label">DOB</apex:outputLabel>  
+                   <apex:input value="{!dob}" styleClass="slds-form-element__control slds-input" type="date"/>  
+                 </div>  
+               </div>  
+              </div>  
+           </div>  
+           <!-- SECTION GROUP ENDS-->  
+           <!-- ADD SECTION GROUPS --> 
+           <apex:outputPanel rendered="{!contacts!=null}" id="pan1">
+           <div class="slds-text-heading_medium">Contacts</div>
+           <div class="slds-panel__section">  
+                   <apex:dataTable value="{!contacts}" var="record" styleClass="slds-table slds-table_bordered slds-table_cell-buffer">
+                   
+        <apex:column value="{!record.firstname}" headerValue="Firstname" headerClass="slds-truncate"/>
+        <apex:column value="{!record.lastname}" headerValue="LastName" headerClass="slds-truncate"/>
+        <apex:column value="{!record.email}" headerValue="Email" headerClass="slds-truncate"/>
+        </apex:datatable>
+           </div> 
+           </apex:outputPanel> 
+           <apex:outputPanel rendered="{!leads!=null}" id="pan2">
+           <div class="slds-text-heading_medium">Leads</div>
+            <div class="slds-panel__section">  
+                   <apex:dataTable value="{!leads}" var="record" styleClass="slds-table slds-table_bordered slds-table_cell-buffer">
+                   <apex:column ><apex:inputCheckbox styleClass="slds-checkbox">
+                                  <apex:actionSupport event="onclick" reRender="Dialog1" action="{!recDetail}" oncomplete="openModel();">
+                                  <apex:param assignTo="{!selected}" value="{!record.id}" name="selectedIL"/>
+                                  </apex:actionSupport>
+                          </apex:inputcheckbox>
+                   </apex:column>
+                   <apex:column value="{!record.firstname}" headerValue="Firstname" headerClass="slds-truncate"/>
+        <apex:column value="{!record.firstname}" headerValue="Firstname" headerClass="slds-truncate"/>
+        <apex:column value="{!record.lastname}" headerValue="Lastname" headerClass="slds-truncate"/>
+        <apex:column value="{!record.email}" headerValue="Email" headerClass="slds-truncate"/>
+        </apex:datatable>
+           </div>  
+           </apex:outputPanel> 
+           <!-- FOOTER -->  
+           <apex:outputPanel Id="Dialog1">
+           <div class="demo-only" style="height: 640px;" >
+  <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-describedby="modal-content-id-1" class="slds-modal slds-modal_large" id="modal">
+    <div class="slds-modal__container">
+      <header class="slds-modal__header">
+        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="closeModal()">
+         &#9986;
+          <span class="slds-assistive-text">Close</span>
+        </button>
+
+         <div class="slds-panel__section">  
+                 <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">PopUp</h2>
+             <div class="slds-button-group slds-float--right" role="group">  
+                
+                       <button class="slds-button slds-button_brand">Convert</button>
+             </div>  
+           </div> 
+      </header>
+      <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+        <div class="slds-grid">
+              <div class="slds-col"><dl class="slds-list_horizontal slds-wrap">
+        <dt class="slds-item_label slds-text-color_weak slds-truncate" title="First Label">FirstName</dt>
+        <dd class="slds-item_detail slds-truncate" title="Description for first label">{!sObj['FirstName']}</dd>
+        <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Second Label">LastName</dt>
+        <dd class="slds-item_detail slds-truncate" title="Description for second label">{!sObj['Lastname']}</dd>
+      </dl></div>
+              <div class="slds-col"><dl class="slds-list_horizontal slds-wrap">
+        <dt class="slds-item_label slds-text-color_weak slds-truncate" title="First Label">Phone Number</dt>
+        <dd class="slds-item_detail slds-truncate" title="Description for first label">{!sObj['Phone']}</dd>
+        <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Second Label">Email</dt>
+        <dd class="slds-item_detail slds-truncate" title="Description for second label">{!sObj['Email']}</dd>
+      </dl></div>
+            </div>
+      </div>
+      
+    </div>
+  </section>
+  <div class="slds-backdrop" id="backdrop"></div>
+</div>
+     </apex:outputPanel>      
+         </apex:form>  
+       </div>  
+     </div>  
+     
+   </body>  
+   </html>
+ </apex:page>
