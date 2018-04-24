@@ -11,7 +11,7 @@ private class AccountManagerTest{
        
        System.assertNotEquals(acc.Id,null);
        
-       Contact con = new Contact(LastName='Test',FirstName='Test',AccountId=acc.Id);
+       Contact con = new Contact(LastName='Test1',FirstName='Test',AccountId=acc.Id);
        
        insert con;
        System.assertNotEquals(con.Id,null);
